@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -37,12 +36,7 @@ public class PersonComparetorTest {
         Collections.sort(personList);
         System.out.println(personList);
 
-        Collections.sort(personList, new Comparator<Person>() {
-            @Override
-            public int compare(Person o1, Person o2) {
-                return (o1.maxAge() > o2.maxAge()) ? -1 : (o1.maxAge() == o2.maxAge()) ? 0 : 1;
-            }
-        });
+        personList.sort((o1, o2) -> Long.compare(o2.maxAge(), o1.maxAge()));
         System.out.println(personList);
     }
 }
